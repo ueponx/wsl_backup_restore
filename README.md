@@ -1,0 +1,2 @@
+# wsl_backup_restore
+WindowsのWSLのOSイメージのバックアップとリストアを行うバッチファイル
