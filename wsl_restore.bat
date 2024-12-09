@@ -1,133 +1,133 @@
 @echo off
 setlocal enabledelayedexpansion
 
-REM WSLƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚Ì•œŒ³ƒXƒNƒŠƒvƒg
-REM Žg—p•û–@: 
-REM   wsl_restore.bat [ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹ƒpƒX] [•œŒ³æƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“–¼] [•œŒ³æƒfƒBƒŒƒNƒgƒŠ(È—ª‰Â:Default’l C:\wsl_images\)]
-REM —á:
+REM WSLãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ã®å¾©å…ƒã‚¹ã‚¯ãƒªãƒ—ãƒˆ
+REM ä½¿ç”¨æ–¹æ³•: 
+REM   wsl_restore.bat ã€ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã€‘ ã€å¾©å…ƒå…ˆãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³åã€‘ ã€å¾©å…ƒå…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª çœç•¥å¯:Defaultå€¤ C:\wsl_images\)ã€‘
+REM ä¾‹:
 REM   wsl_restore.bat C:\wsl_images\backup.tar Ubuntu-Restore
 REM   wsl_restore.bat D:\backups\ubuntu_20231203_1200.tar MyUbuntu D:\wsl
 
-REM ˆø”ƒ`ƒFƒbƒN
+REM å¼•æ•°ãƒã‚§ãƒƒã‚¯
 if "%1"=="" (
-    echo ƒGƒ‰[: ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ÌƒpƒX‚ðŽw’è‚µ‚Ä‚­‚¾‚³‚¢B
-    echo Žg—p•û–@: wsl_restore.bat [ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹ƒpƒX] [•œŒ³æƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“–¼] [•œŒ³æƒfƒBƒŒƒNƒgƒŠ(È—ª‰Â:Default’l C:\wsl_images)]
-    echo —á:
+    echo ã‚¨ãƒ©ãƒ¼: ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚
+    echo ä½¿ç”¨æ–¹æ³•: wsl_restore.bat ã€ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã€‘ ã€å¾©å…ƒå…ˆãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³åã€‘ ã€å¾©å…ƒå…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª çœç•¥å¯:Defaultå€¤ C:\wsl_images ã€‘
+    echo ä¾‹:
     echo wsl_restore.bat C:\wsl_images\backup.tar Ubuntu-Restore
     echo wsl_restore.bat D:\backups\ubuntu_20231203_1200.tar MyUbuntu D:\wsl
     exit /b 1
 )
 
 if "%2"=="" (
-    echo ƒGƒ‰[: •œŒ³æ‚ÌƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“–¼‚ðŽw’è‚µ‚Ä‚­‚¾‚³‚¢B
-    echo Žg—p•û–@: wsl_restore.bat [ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹ƒpƒX] [•œŒ³æƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“–¼] [•œŒ³æƒfƒBƒŒƒNƒgƒŠ(È—ª‰Â:Default’l C:\wsl_images)]
+    echo ã‚¨ãƒ©ãƒ¼: å¾©å…ƒå…ˆã®ãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³åã‚’æŒ‡å®šã—ã¦ãã ã•ã„ã€‚
+    echo ä½¿ç”¨æ–¹æ³•: wsl_restore.bat [ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹] [å¾©å…ƒå…ˆãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³å] [å¾©å…ƒå…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª(çœç•¥å¯:Defaultå€¤ C:\wsl_images)]
     exit /b 1
 )
 
-REM ƒpƒ‰ƒ[ƒ^‚ÌÝ’è
+REM ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®è¨­å®š
 set "BACKUP_FILE=%~1"
 set "DISTRO_NAME=%2"
 set "RESTORE_DIR=%3"
 
-REM •œŒ³æƒfƒBƒŒƒNƒgƒŠ‚ªŽw’è‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÌƒfƒtƒHƒ‹ƒgÝ’è
+REM å¾©å…ƒå…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒæŒ‡å®šã•ã‚Œã¦ã„ãªã„å ´åˆã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆè¨­å®š
 if "%RESTORE_DIR%"=="" (
     set "RESTORE_DIR=C:\wsl_images\%DISTRO_NAME%"
 )
 
-REM ƒVƒXƒeƒ€ŠÇ—ŽÒŒ ŒÀƒ`ƒFƒbƒN
+REM ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…æ¨©é™ãƒã‚§ãƒƒã‚¯
 net session >nul 2>&1
 if errorlevel 1 (
-    echo ƒGƒ‰[: ‚±‚ÌƒXƒNƒŠƒvƒg‚É‚ÍŠÇ—ŽÒŒ ŒÀ‚ª•K—v‚Å‚·B
-    echo ŠÇ—ŽÒ‚Æ‚µ‚ÄŽÀs‚µ‚Ä‚­‚¾‚³‚¢B
+    echo ã‚¨ãƒ©ãƒ¼: ã“ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã«ã¯ç®¡ç†è€…æ¨©é™ãŒå¿…è¦ã§ã™ã€‚
+    echo ç®¡ç†è€…ã¨ã—ã¦å®Ÿè¡Œã—ã¦ãã ã•ã„ã€‚
     exit /b 1
 )
 
-REM WSL‚Ìó‘ÔŠm”F
+REM WSLã®çŠ¶æ…‹ç¢ºèª
 wsl --status >nul 2>&1
 if errorlevel 1 (
-    echo ƒGƒ‰[: WSL‚ª³í‚É“®ì‚µ‚Ä‚¢‚Ü‚¹‚ñB
-    echo WSL‚ÌƒXƒe[ƒ^ƒX‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B
+    echo ã‚¨ãƒ©ãƒ¼: WSLãŒæ­£å¸¸ã«å‹•ä½œã—ã¦ã„ã¾ã›ã‚“ã€‚
+    echo WSLã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚
     exit /b 1
 )
 
-REM ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚Ì‘¶ÝŠm”F
+REM ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®å­˜åœ¨ç¢ºèª
 if not exist "!BACKUP_FILE!" (
-    echo ƒGƒ‰[: ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ: !BACKUP_FILE!
+    echo ã‚¨ãƒ©ãƒ¼: ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“: !BACKUP_FILE!
     exit /b 1
 )
 
-REM ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚Ì®‡«ƒ`ƒFƒbƒN
-echo ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚Ì®‡«‚ðŠm”F‚µ‚Ä‚¢‚Ü‚·...
+REM ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®æ•´åˆæ€§ãƒã‚§ãƒƒã‚¯
+echo ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã®æ•´åˆæ€§ã‚’ç¢ºèªã—ã¦ã„ã¾ã™...
 tar tf "!BACKUP_FILE!" >nul 2>&1
 if errorlevel 1 (
-    echo ƒGƒ‰[: ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ª”j‘¹‚µ‚Ä‚¢‚é‚©A–³Œø‚ÈƒtƒH[ƒ}ƒbƒg‚Å‚·B
+    echo ã‚¨ãƒ©ãƒ¼: ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ãŒç ´æã—ã¦ã„ã‚‹ã‹ã€ç„¡åŠ¹ãªãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆã§ã™ã€‚
     exit /b 1
 )
 
-REM ƒfƒBƒXƒN—e—Êƒ`ƒFƒbƒN
-for /f "tokens=3" %%a in ('dir /-c "!BACKUP_FILE!" ^| findstr "ƒoƒCƒg"') do set "BACKUP_SIZE=%%a"
-for /f "tokens=3" %%a in ('dir /-c "!RESTORE_DIR!\.." ^| findstr "ƒoƒCƒg‚Ì‹ó‚«"') do set "FREE_SPACE=%%a"
+REM ãƒ‡ã‚£ã‚¹ã‚¯å®¹é‡ãƒã‚§ãƒƒã‚¯
+for /f "tokens=3" %%a in ('dir /-c "!BACKUP_FILE!" ^| findstr "ãƒã‚¤ãƒˆ"') do set "BACKUP_SIZE=%%a"
+for /f "tokens=3" %%a in ('dir /-c "!RESTORE_DIR!\.." ^| findstr "ãƒã‚¤ãƒˆã®ç©ºã"') do set "FREE_SPACE=%%a"
 if !FREE_SPACE! LSS !BACKUP_SIZE! (
-    echo ƒGƒ‰[: •œŒ³æ‚ÌƒfƒBƒXƒN—e—Ê‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·B
-    echo •K—v‚È—e—Ê: !BACKUP_SIZE! ƒoƒCƒg
-    echo —˜—p‰Â”\‚È—e—Ê: !FREE_SPACE! ƒoƒCƒg
+    echo ã‚¨ãƒ©ãƒ¼: å¾©å…ƒå…ˆã®ãƒ‡ã‚£ã‚¹ã‚¯å®¹é‡ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚
+    echo å¿…è¦ãªå®¹é‡: !BACKUP_SIZE! ãƒã‚¤ãƒˆ
+    echo åˆ©ç”¨å¯èƒ½ãªå®¹é‡: !FREE_SPACE! ãƒã‚¤ãƒˆ
     exit /b 1
 )
 
-REM •œŒ³ƒfƒBƒŒƒNƒgƒŠ‚ÌŠm”F‚Æì¬
+REM å¾©å…ƒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ç¢ºèªã¨ä½œæˆ
 if not exist "!RESTORE_DIR!" (
-    echo •œŒ³ƒfƒBƒŒƒNƒgƒŠ‚ðì¬‚µ‚Ü‚·: !RESTORE_DIR!
+    echo å¾©å…ƒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ä½œæˆã—ã¾ã™: !RESTORE_DIR!
     mkdir "!RESTORE_DIR!"
     if errorlevel 1 (
-        echo ƒGƒ‰[: •œŒ³ƒfƒBƒŒƒNƒgƒŠ‚Ìì¬‚ÉŽ¸”s‚µ‚Ü‚µ‚½B
-        echo ƒpƒX‚ÌŒ ŒÀ‚â‹ó‚«—e—Ê‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B
+        echo ã‚¨ãƒ©ãƒ¼: å¾©å…ƒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸã€‚
+        echo ãƒ‘ã‚¹ã®æ¨©é™ã‚„ç©ºãå®¹é‡ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚
         exit /b 1
     )
 )
 
-REM Šù‘¶‚ÌƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ÌŠm”F‚Æíœ
+REM æ—¢å­˜ã®ãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ã®ç¢ºèªã¨å‰Šé™¤
 wsl --list | findstr /C:"!DISTRO_NAME!" >nul
 if not errorlevel 1 (
-    echo Œx: Šù‘¶‚ÌƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“ "!DISTRO_NAME!" ‚ª‘¶Ý‚µ‚Ü‚·B
-    choice /M "Šù‘¶‚ÌƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ðíœ‚µ‚Ä‘±s‚µ‚Ü‚·‚©H"
+    echo è­¦å‘Š: æ—¢å­˜ã®ãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ "!DISTRO_NAME!" ãŒå­˜åœ¨ã—ã¾ã™ã€‚
+    choice /M "æ—¢å­˜ã®ãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‰Šé™¤ã—ã¦ç¶šè¡Œã—ã¾ã™ã‹ï¼Ÿ"
     if errorlevel 2 (
-        echo •œŒ³‚ðƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½B
+        echo å¾©å…ƒã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸã€‚
         exit /b 0
     )
-    echo Šù‘¶‚ÌƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚ðíœ‚µ‚Ü‚·...
+    echo æ—¢å­˜ã®ãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å‰Šé™¤ã—ã¾ã™...
     wsl --unregister "!DISTRO_NAME!"
     if errorlevel 1 (
-        echo ƒGƒ‰[: ƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚Ìíœ‚ÉŽ¸”s‚µ‚Ü‚µ‚½B
+        echo ã‚¨ãƒ©ãƒ¼: ãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ã®å‰Šé™¤ã«å¤±æ•—ã—ã¾ã—ãŸã€‚
         exit /b 1
     )
 )
 
 echo.
-echo •œŒ³‚ðŠJŽn‚µ‚Ü‚·...
-echo ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹: !BACKUP_FILE!
-echo •œŒ³æƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“: !DISTRO_NAME!
-echo •œŒ³æƒfƒBƒŒƒNƒgƒŠ: !RESTORE_DIR!
+echo å¾©å…ƒã‚’é–‹å§‹ã—ã¾ã™...
+echo ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«: !BACKUP_FILE!
+echo å¾©å…ƒå…ˆãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³: !DISTRO_NAME!
+echo å¾©å…ƒå…ˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª: !RESTORE_DIR!
 echo.
 
-REM WSLƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚Ì•œŒ³
+REM WSLãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ã®å¾©å…ƒ
 wsl --import "!DISTRO_NAME!" "!RESTORE_DIR!" "!BACKUP_FILE!"
 if errorlevel 1 (
-    echo ƒGƒ‰[: ƒfƒBƒXƒgƒŠƒrƒ…[ƒVƒ‡ƒ“‚Ì•œŒ³‚ÉŽ¸”s‚µ‚Ü‚µ‚½B
-    echo WSL‚ÌƒƒO‚ðŠm”F‚µ‚Ä‚­‚¾‚³‚¢B
+    echo ã‚¨ãƒ©ãƒ¼: ãƒ‡ã‚£ã‚¹ãƒˆãƒªãƒ“ãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ã®å¾©å…ƒã«å¤±æ•—ã—ã¾ã—ãŸã€‚
+    echo WSLã®ãƒ­ã‚°ã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚
     exit /b 1
 )
 
 echo.
-echo •œŒ³‚ª³í‚ÉŠ®—¹‚µ‚Ü‚µ‚½B
+echo å¾©å…ƒãŒæ­£å¸¸ã«å®Œäº†ã—ã¾ã—ãŸã€‚
 echo.
-echo ˆÈ‰º‚ÌƒRƒ}ƒ“ƒh‚ÅWSL‚ð‹N“®‚Å‚«‚Ü‚·:
-echo   ƒfƒtƒHƒ‹ƒgƒ†[ƒU[irootj‚Å‹N“®:
+echo ä»¥ä¸‹ã®ã‚³ãƒžãƒ³ãƒ‰ã§WSLã‚’èµ·å‹•ã§ãã¾ã™:
+echo   ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ¦ãƒ¼ã‚¶ãƒ¼ï¼ˆrootï¼‰ã§èµ·å‹•:
 echo   wsl -d !DISTRO_NAME!
 echo.
-echo   “Á’è‚Ìƒ†[ƒU[‚Å‹N“®:
-echo   wsl -d !DISTRO_NAME! -u [ƒ†[ƒU[–¼]
+echo   ç‰¹å®šã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ã§èµ·å‹•:
+echo   wsl -d !DISTRO_NAME! -u [ãƒ¦ãƒ¼ã‚¶ãƒ¼å]
 echo.
-echo ’ˆÓ: ƒfƒtƒHƒ‹ƒgƒ†[ƒU[‚ð•ÏX‚·‚éê‡‚ÍA/etc/wsl.conf‚ðÝ’è‚µ‚Ä‚­‚¾‚³‚¢B
+echo æ³¨æ„: ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’å¤‰æ›´ã™ã‚‹å ´åˆã¯ã€/etc/wsl.confã‚’è¨­å®šã—ã¦ãã ã•ã„ã€‚
 
 endlocal
 exit /b 0
