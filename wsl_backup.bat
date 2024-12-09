@@ -3,7 +3,7 @@ setlocal enabledelayedexpansion
 
 REM WSLディストリビューションのバックアップスクリプト
 REM 使用方法: 
-REM   wsl_backup.bat [ディストリビューション名] [バックアップパス(省略可:Default値 C:\wsl_images\)]
+REM   wsl_backup.bat 【ディストリビューション名】 【バックアップパス 省略可:Default値 C:\wsl_images\ 】
 REM 例:
 REM   wsl_backup.bat Ubuntu-22.04
 REM   wsl_backup.bat Ubuntu-22.04 D:\backups
@@ -11,7 +11,7 @@ REM   wsl_backup.bat Ubuntu-22.04 D:\backups
 REM 引数チェック
 if "%1"=="" (
     echo エラー: バックアップ対象のディストリビューション名を指定してください。
-    echo 使用方法: wsl_backup.bat [ディストリビューション名] [バックアップパス(省略可:Default値 C:\wsl_images)]
+    echo 使用方法: wsl_backup.bat 【ディストリビューション名】 【バックアップパス 省略可:Default値 C:\wsl_images 】
     echo 例:
     echo wsl_backup.bat Ubuntu-22.04
     echo wsl_backup.bat Ubuntu-22.04 D:\backups
